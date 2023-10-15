@@ -1,0 +1,30 @@
+连接驱动板 TB220A1
+
+正面拿驱动板，开关对着左手位置
+以此为正面
+
+左边的电机是 PWMB 对应encoder1代码里面的right电机    PWMB正时，默认方向向前转
+右边的电机是 PWMA 对应encoder1代码里面的left电机      PWMA正时，默认方向向后转
+
+接线：
+驱动板输入端接15v以内电源，最好12v
+
+左边白色插槽连小车物理位置右电机
+右边白色插槽连小车物理位置左电机
+
+编码器IO：
+GND -- arduino mega GND
+E2A  -- arduino mega 19
+E2B  -- arduino mega 18
+E1A  -- arduino mega 21
+E1B  -- arduino mega 20
+5V  不接
+
+驱动IO：
+PWMB -- arduino mega 10
+BIN2  -- arduino mega 9
+BIN1  -- arduino mega 8
+STBY  -- arduino mega 7
+AIN1 -- arduino mega 5
+AIN2 -- arduino mega 4
+PWMA -- arduino mega 3
