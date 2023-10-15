@@ -5,21 +5,21 @@
 
 ## Connecting the drive board TB220A1
 
-Take the driver board from the front, with the switch facing the left hand position
-Take this as a positive aspect
+Take the driver board from the front, with the switch facing the left hand position        
+Take this as a positive aspect        
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/e28d370d-d351-4139-bba7-9d6e07931518)
 
 The motor on the left is the right motor 'PWMB' timing in the encoder1 code corresponding to 'PWMB', with a default direction of forward rotation
 The motor on the right is the left motor 'PWMA' timing in the encoder1 code corresponding to 'PWMA', with the default direction turning backwards
 
 ## Wire Connection：
-The input terminal of the drive board is connected to a power supply of less than 15V, preferably 12V
-The corresponding motor is 'MG513P30_ 12V'
-
-Left white slot connected to the physical position of the car, left motor
-Right white slot connected to the physical position of the car Right motor
-    
-EncoderIO：
+The input terminal of the drive board is connected to a power supply of less than 15V, preferably 12V        
+The corresponding motor is 'MG513P30_ 12V'        
+        
+Left white slot connected to the physical position of the car, left motor        
+Right white slot connected to the physical position of the car Right motor        
+        
+EncoderIO：        
 ```
 GND -- arduino mega GND
 E2A  -- arduino mega 19
@@ -48,10 +48,10 @@ PWMA -- arduino mega 3
 
 # 2.Arduino wire connection Test
 ## 1. Motor rotation test
-Test whether the two motors can rotate normally using the 'TB6612motor' Arduino project  
+Test whether the two motors can rotate normally using the 'TB6612motor' Arduino project          
 
 ## 2. Encoder testing
-Use 'encoder1' as the Arduino project to test the readings of two encoders separately
+Use 'encoder1' as the Arduino project to test the readings of two encoders separately        
 
 ```
 // motor1
@@ -82,27 +82,27 @@ void setup() {
 ```
 
 # 3.Arduino Bridge Test
-By configuring the wiring and IO port of 'TB220A1', you can directly burn and write the arduino bridge file to 'Mega2560', and then start testing
+By configuring the wiring and IO port of 'TB220A1', you can directly burn and write the arduino bridge file to 'Mega2560', and then start testing        
 ## 1.Test encoder rotation
-'e' is the number of test encoders
-'r' is the reset encoder count
-After testing the left and right wheels in the correct direction and direction, proceed to the next step of testing
-
+'e' is the number of test encoders        
+'r' is the reset encoder count        
+After testing the left and right wheels in the correct direction and direction, proceed to the next step of testing        
+        
 ![1689542401212](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/ce1a72d5-582a-4b7c-806a-bb5b705be93f)
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/a0212356-5c85-44a9-810f-185c1ec98e7d)
 
 ## 2.Test motor drive
-'m' is motor speed control
-'m 100 0' is the forward movement of the left motor at a speed of 100 seconds
-Then set 'm 0 0'
+'m' is motor speed control        
+'m 100 0' is the forward movement of the left motor at a speed of 100 seconds        
+Then set 'm 0 0'        
 
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/e4f6d4d9-9224-4957-a49c-c3a394f598fc)
 
 
 ## 3.PID debugging
-After testing the motor rotation and encoder function, start testing the PID
-In diff_ Under controller. h, change the test PID parameters
-Test doPID left and right wheels separately, remember to uncomment and restore after testing is completed
+After testing the motor rotation and encoder function, start testing the PID        
+In diff_ Under controller. h, change the test PID parameters        
+Test doPID left and right wheels separately, remember to uncomment and restore after testing is completed        
 
 ```
 
@@ -139,9 +139,9 @@ void doPID(SetPointInfo * p) {
 ```
 
 ## 4.Ros-arduino-bridge yaml File Configuration
-The main startup files are in 'ROS_Arduino_Bridge/Ros_Arduino_Python/launch'.
-Among them, 'my_ arduino_params' is the default file name
-Copy and rename under 'config', enter the following parameters
+The main startup files are in 'ROS_Arduino_Bridge/Ros_Arduino_Python/launch'.        
+Among them, 'my_ arduino_params' is the default file name        
+Copy and rename under 'config', enter the following parameters        
 ```
 # For a direct USB cable connection, the port name is typically
 # /dev/ttyACM# where is # is a number such as 0, 1, 2, etc
@@ -195,16 +195,16 @@ sensors: {
 
 ```
 
-Before running the bridge's launch file, it is necessary to 'ros_arduino_python/nodes/arduino_node.py' Setting executable permissions for files under 'node.py'
+Before running the bridge's launch file, it is necessary to 'ros_arduino_python/nodes/arduino_node.py' Setting executable permissions for files under 'node.py'        
 ```
 sudo chmod +x arduino_node.py
 ```
 
 # 4.Distributed communication configuration
-## 0.Wifi Connections setting up
-1.Hardware preparation: Use a display screen or HDMI acquisition card to connect to Raspberry Pi and start it;
-2.Connect the Raspberry Pi to a wireless network;
-3.Configure static IP for Raspberry Pi, as shown in the figure
+## 0.Wifi Connections setting up        
+1.Hardware preparation: Use a display screen or HDMI acquisition card to connect to Raspberry Pi and start it;        
+2.Connect the Raspberry Pi to a wireless network;        
+3.Configure static IP for Raspberry Pi, as shown in the figure        
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/c0083ae4-d1ba-4718-89dc-9b6a90a15a66)
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/3ae99666-860b-4e96-824a-8814bdb9ea72)
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/147a9526-c8c1-436a-9171-faf2131f6ab4)
@@ -212,54 +212,55 @@ sudo chmod +x arduino_node.py
 
 ## 1.System File Configuration
 ### Necessary dependency installation
-The SSH implementation architecture is divided into two parts: client and server. The client is the sender of data, and the server is the receiver of data. In the current scenario, we need to send data from the PC to Raspberry Pi. Therefore, the PC belongs to the client, while Raspberry Pi belongs to the server. The specific implementation process is as follows:
+The SSH implementation architecture is divided into two parts: client and server. The client is the sender of data, and the server is the receiver of data.         
+In the current scenario, we need to send data from the PC to Raspberry Pi. Therefore, the PC belongs to the client, while Raspberry Pi belongs to the server. The specific implementation process is as follows:        
 1. Install SSH client and server separately
 2. Start SSH service on the server
 3. Remote login of the client to the server
 4. Implement data transmission
-#### 1.Install SSH client and server
-By default, the Ubuntu system already has an SSH client installed, so you only need to install the server on Raspberry Pi (if Raspberry Pi is installing a service version of Ubuntu, the SSH service will be installed by default and has been set to boot automatically):
+#### 1.Install SSH client and server        
+By default, the Ubuntu system already has an SSH client installed, so you only need to install the server on Raspberry Pi (if Raspberry Pi is installing a service version of Ubuntu, the SSH service will be installed by default and has been set to boot automatically):        
 ```
 sudo apt-get install openssh-server
 ```
-If the client needs to install itself, call the following command:
+If the client needs to install itself, call the following command:        
 ```
 sudo apt-get install openssh-client
 ```
 #### 2.Start SSH service on the server
-Raspberry Pi Start SSH Service:
+Raspberry Pi Start SSH Service:        
 ```
 sudo /etc/init.d/ssh start
 ```
-Check if the service is running normally after startup:
+Check if the service is running normally after startup:        
 ```
 ps -e | grep ssh
 ```
-If the startup is successful, it will include two programs: 'sshd' and 'ssh'.
-In the future, it is necessary to frequently use SSH to log in to Raspberry Pi. To simplify implementation, you can set the SSH service of Raspberry Pi to boot automatically. The command is as follows:
+If the startup is successful, it will include two programs: 'sshd' and 'ssh'.        
+In the future, it is necessary to frequently use SSH to log in to Raspberry Pi. To simplify implementation, you can set the SSH service of Raspberry Pi to boot automatically. The command is as follows:        
 ```
 sudo systemctl enable ssh
 ```
 #### 3.Remote login of the client to the server
-To log in to Raspberry Pi, you can call the following command:
+To log in to Raspberry Pi, you can call the following command:        
 ```
 ssh Account@IP_address
 ```
-Then, according to the prompt, enter the login password to successfully log in.
-If you exit the login, you can call the 'exit' command:
+Then, according to the prompt, enter the login password to successfully log in.        
+If you exit the login, you can call the 'exit' command:        
 ```
 exit
 ```
 #### 4.Implement data transmission
-Upload file:
+Upload file:        
 ```
 scp Local_file_path account@ip:Raspberry_path
 ```
-Upload folder:
+Upload folder:        
 ```
 scp -r Local_folder_path account@ip:Raspberry_path
 ```
-Download files:        
+Download files:                
 ```
 scp account@ip:Raspberry_path Local_file_path    
 ```
@@ -268,7 +269,7 @@ Download folders:
 scp -r account@ip:Raspberry_path Local_folder_path
 ```
 #### 3.Install Ros—Arduino-Bridge
-'ROS_Arduino_Bridge' relies on the 'Python serial' feature pack. Please install this feature pack on the Raspberry Pi client first. The installation command is:    
+'ROS_Arduino_Bridge' relies on the 'Python serial' feature pack. Please install this feature pack on the Raspberry Pi client first. The installation command is:            
 ```
 sudo apt-get install python-serial
 ```
@@ -276,22 +277,22 @@ or
 ```
 sudo pip install --upgrade pyserial
 ```
-or    
+or            
 ```
 sudo easy_install -U pyserial
 ```
 
 ### configuration file    
-Connect Raspberry Pi or Jetson Nano to the same WiFi network as the computer    
-As 'PC: 192.168.0.101'      
-As Raspberry Pi 'Pi: 192.168.0.110'    
-Both the computer end and embedded controller end are set with static IPs to ensure they are in the same network segment    
-Input    
+Connect Raspberry Pi or Jetson Nano to the same WiFi network as the computer            
+As 'PC: 192.168.0.101'          
+As Raspberry Pi 'Pi: 192.168.0.110'            
+Both the computer end and embedded controller end are set with static IPs to ensure they are in the same network segment        
+Input        
 ```
 sudo gedit /etc/hosts
 ```
-Both the slave and host must be set    
-Configure the other party's IP address    
+Both the slave and host must be set        
+Configure the other party's IP address        
 ```
 127.0.0.1	localhost
 127.0.1.1	zhy
@@ -305,58 +306,58 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
-Then configure the ROS host and slave corresponding to the '. bashrc' file
-Enter 'sudo gedit. bashrc'
-Set the PC as a slave and take the main address of the host Raspberry
+Then configure the ROS host and slave corresponding to the '. bashrc' file        
+Enter 'sudo gedit. bashrc'        
+Set the PC as a slave and take the main address of the host Raspberry        
 ```
 export ROS_MASTER_URI=http://192.168.0.110:11311
 export ROS_HOSTNAME=192.168.0.101
 ```
-Set Raspberry Pi as the host, and take the address of the host Raspberry Pi as the main address
+Set Raspberry Pi as the host, and take the address of the host Raspberry Pi as the main address        
 ```
 export ROS_MASTER_URI=http://192.168.0.110:11311
 export ROS_HOSTNAME=192.168.0.110
 ```
 
 ## 2.sshConnection control
-Control commands such as:    
+Control commands such as:            
 ```
 ssh -X wheeltec@192.168.0.110
 ```
-Enter password and start controlling
+Enter password and start controlling        
 
-主机端运行roscore,从机端不需要运行roscore就能发送信息        
-注意,所有命令行需要source .bashrc 否则不刷新环境变量        
-主机端运行测试:        
+The host side run 'roscore', while the slave side does not need to run 'roscore' to send messages        
+Note that all command lines require 'source. bashrc', otherwise the environment variables will not be refreshed        
+Host side running test:        
 ```
 roscore
 rosrun turtlesim turtlesim_node 
 ```
-从机端运行控制:
+Slave running test:        
 ```
 rosrun turtlesim turtlesim_node 
 ```
-都测试通过可以接收消息后,可以开始测试arduino bridge控制
+After all tests are passed and messages can be received, you can start testing the arduino bridge control        
 
-## 3.遥控小车测试
-### 1.代码传输及编译
-请先在树莓派端创建工作空间，在PC端进入本地工作空间的src目录，调用程序上传命令:        
+## 3.Remote control car test
+### 1.Code transmission and compilation
+Please first create a workspace on the Raspberry Pi end, enter the 'src' directory of the local workspace on the PC end, and call the program upload command:        
 ```
-scp -r ros_arduino_bridge/ 树莓派用户名@树莓派ip:~/工作空间/src
+scp -r ros_arduino_bridge/ Raspberry_account@Raspberry_ip:~/workspace/src
 ```
-在树莓派端进入工作空间并编译:        
+Enter the workspace and compile on the Raspberry Pi end:        
 ```
 catkin_make
 ```
-### 2.测试
-现启动树莓派端程序，再启动PC端程序。        
-#### 树莓派端
-启动 ros_arduino_bridge 节点:        
+### 2.test
+Now start the Raspberry Pi program, and then start the PC program.        
+#### Raspberry Pi
+Start ros_arduino_bridge node:        
 ```
 roslaunch ros_arduino_python arduino.launch
 ```
-#### PC端
-启动键盘控制节点：        
+#### PC
+Start keyboard control node：        
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
