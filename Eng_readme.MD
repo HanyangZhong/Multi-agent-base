@@ -361,4 +361,4 @@ Start keyboard control node：
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
-如无异常，现在就可以在PC端通过键盘控制小车运动了，并且PC端还可以使用rviz查看小车的里程计信息。        
+If there are no abnormalities, you can now control the car's movement on the PC through the keyboard, and the PC can also use rviz to view the car's odometer information.                  
