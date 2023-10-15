@@ -1,4 +1,8 @@
 # 1.小车驱动板硬件连接
+![d442afaf809981fc043d6bcae772b21](https://github.com/HanyangZhong/Multi-agent-base/assets/119017394/8f8ac297-c808-4125-8f53-bb74e785f04c)
+![821f4247668aef92b34aded4d3898d7](https://github.com/HanyangZhong/Multi-agent-base/assets/119017394/952c200e-f2a1-4eb7-bf70-e2648e03a5a4)
+
+
 ## 连接驱动板 TB220A1
 
 正面拿驱动板，开关对着左手位置    
@@ -24,6 +28,10 @@ E1A  -- arduino mega 21
 E1B  -- arduino mega 20
 5V  不接
 ```
+
+![c3236ec6e28d0965030df91bf430cfb](https://github.com/HanyangZhong/Multi-agent-base/assets/119017394/cac0c97d-bebb-4227-b61d-17be73e3c035)
+![7beadca7b2e9b9cac09d8948b6bce38](https://github.com/HanyangZhong/Multi-agent-base/assets/119017394/4dedd042-d5e0-4062-91e9-68017d839615)
+
 
 ![image](https://github.com/HanyangZhong/self-driving-high-precision-map-study/assets/119017394/764c4b5e-2b0f-4239-9a12-b7b1c36029ba)
 
